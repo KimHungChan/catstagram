@@ -1,0 +1,15 @@
+.post-container {
+  height: 15rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem; //   overflow: hidden;
+  img {
+    height: 12rem;
+    width: inherit;
+  }
+
+  button {
+    height: 3rem;
+  }
+}

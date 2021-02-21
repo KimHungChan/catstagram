@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getImages } from "../../Api/Api";
+import { PostInterface } from "../../Components/Post/Post";
+import Posts from "../../Components/Posts/Posts";
 
 const Home = () => {
+  const [posts, setPosts] = useState<[PostInterface]>([
+    { url: "", width: 0, height: 0, id: "", sub_id: null },
+  ]);
+
   useEffect(() => {
-    getImages();
+    getImages().then((response: any) => {
+      setPosts(response);
+    });
   }, []);
-  return <div>We is Home Yo</div>;
+  return <div>{<Posts posts={posts} />}</div>;
 };
 
 export default Home;
