@@ -4,7 +4,7 @@ const axios = require("axios");
 const uploadImage = (file: any, sub_id: string) => {
   const form = new FormData();
   form.append("file", file);
-  axios
+  return axios
     .post(
       "https://api.thecatapi.com/v1/images/upload",
 
@@ -66,7 +66,7 @@ const getFavourites = () => {
 
 const getVotes = () => {
   return axios
-    .get("https://api.thecatapi.com/v1/votes?limit=100", {
+    .get("https://api.thecatapi.com/v1/votes?limit=10000", {
       headers: { "x-api-key": config.APIKEY },
     })
     .then((response: any) => response.data);

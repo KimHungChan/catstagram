@@ -1,0 +1,62 @@
+@import "../../Styles/colors.scss";
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+}
+
+.drop-container {
+  @include center;
+  flex-direction: column;
+  h1 {
+    margin: 0 auto;
+  }
+}
+
+.upload-container {
+  @include center;
+  flex-direction: column;
+  background-color: $background-color;
+  min-height: calc(100% - 154px);
+
+  .drop-zone {
+    width: 20rem;
+    height: 20rem;
+    background-color: white;
+    border: 2px dashed black;
+  }
+
+  .image-item {
+    flex-direction: column;
+    @include center;
+
+    img {
+      margin: 2rem auto;
+    }
+  }
+
+  button {
+    display: block;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: black;
+    width: 206px;
+    height: 47px;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    background-size: 100% 100%;
+    margin-bottom: 15px;
+    margin: 2rem auto;
+  }
+
+  .upload-button-container {
+    @include center;
+    margin: 0 auto;
+    > button {
+      margin: 2rem;
+    }
+  }
+}

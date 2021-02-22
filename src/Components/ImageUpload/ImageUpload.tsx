@@ -1,5 +1,7 @@
 import React from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
+import { uploadImage } from "../../Api/Api";
+import "./ImageUpload.scss";
 
 const ImageUpload = ({
   images,
@@ -26,28 +28,46 @@ const ImageUpload = ({
         isDragging,
         dragProps,
       }) => (
-        // write your building UI
-        <div className="upload__image-wrapper">
-          {images.length <= 0 ? (
-            <button
-              style={isDragging ? { color: "red" } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Click or Drop here
-            </button>
-          ) : (
-            imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image.dataURL} alt="" width="100" />
-                <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageUpdate(index)}>Update</button>
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
-                </div>
+        <>
+          <div className="upload-container">
+            {images.length <= 0 ? (
+              <div className="drop-container">
+                <button
+                  className="drop-zone"
+                  style={isDragging ? { color: "red" } : undefined}
+                  onClick={onImageUpload}
+                  {...dragProps}
+                ></button>
+                <h1>Click or drop here</h1>
               </div>
-            ))
-          )}
-        </div>
+            ) : (
+              imageList.map((image, index) => (
+                <>
+                  <div key={index} className="image-item">
+                    <img src={image.dataURL} alt="" width="100" />
+                    <div className="upload-button-container">
+                      <button onClick={() => onImageUpdate(index)}>
+                        Update
+                      </button>
+                      <button onClick={() => onImageRemove(index)}>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() =>
+                      uploadImage(images[0]?.file, "").then(() => {
+                        onImageRemove(index);
+                      })
+                    }
+                  >
+                    Upload Image
+                  </button>
+                </>
+              ))
+            )}
+          </div>
+        </>
       )}
     </ImageUploading>
   );

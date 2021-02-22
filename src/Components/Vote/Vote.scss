@@ -1,0 +1,27 @@
+.vote-container {
+  button {
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .up {
+    background-image: url("../../Assets/arrow-filled.png");
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .down {
+    background-image: url("../../Assets/arrow-empty.png");
+    transform: rotate(180deg);
+    &:hover {
+      transform: scale(1.1) rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.score {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  justify-content: flex-end;
+  div {
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../../Assets/star.png");
+  }
+}
