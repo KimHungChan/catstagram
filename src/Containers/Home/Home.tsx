@@ -71,10 +71,6 @@ const Home = () => {
           vote.value === 1 ? numberOfVotes++ : numberOfVotes--;
         }
       });
-      console.log(
-        "🚀 ~ file: Home.tsx ~ line 73 ~ votes.forEach ~ numberOfVotes",
-        numberOfVotes
-      );
       newPosts[index] = {
         ...newPosts[index],
         votes: numberOfVotes,
