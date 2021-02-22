@@ -11,14 +11,16 @@ interface Props {
 const Posts: React.FC<Props> = ({ posts, refreshVotes, refreshFavourites }) => {
   return (
     <div className="posts-container">
-      {posts.map((post, key) => (
-        <Post
-          key={key}
-          post={post}
-          refreshVotes={refreshVotes}
-          refreshFavourites={refreshFavourites}
-        />
-      ))}
+      <div className="posts-container-inner-block">
+        {posts.map((post, key) => (
+          <Post
+            key={key}
+            post={post}
+            refreshVotes={refreshVotes}
+            refreshFavourites={refreshFavourites}
+          />
+        ))}
+      </div>
     </div>
   );
 };

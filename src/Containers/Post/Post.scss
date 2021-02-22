@@ -1,0 +1,31 @@
+.post-container {
+  // margin: 2rem; //   overflow: hidden;
+  margin: auto;
+  width: 21%;
+  min-width: 20rem;
+  .content-container {
+    // width: 20rem;
+
+    height: 20rem;
+    width: 20rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .image-container {
+      width: inherit;
+      height: inherit;
+      display: flex;
+      align-items: center;
+      img {
+        height: inherit;
+        width: inherit;
+        object-fit: cover;
+      }
+    }
+
+    button {
+      height: 3rem;
+    }
+  }
+}

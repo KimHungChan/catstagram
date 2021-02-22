@@ -1,6 +1,6 @@
-import Favourite from "../Favourite/Favourite";
-import Score from "../Score/Score";
-import Vote from "../Vote/Vote";
+import Favourite from "../../Components/Favourite/Favourite";
+import Score from "../../Components/Score/Score";
+import Vote from "../../Components/Vote/Vote";
 import "./Post.scss";
 
 export interface PostInterface {
@@ -31,16 +31,20 @@ interface Props {
 const Post: React.FC<Props> = ({ post, refreshVotes, refreshFavourites }) => {
   return (
     <div className="post-container">
-      <img src={post.url} alt="" />
+      <div className="content-container">
+        <div className="image-container">
+          <img src={post.url} alt="" />
+        </div>
 
-      <Favourite post={post} refreshFavourites={refreshFavourites} />
-      <Vote
-        image_id={post.id}
-        value={post.vote}
-        id={post.vote_id}
-        refreshVotes={refreshVotes}
-      />
-      {post.votes && <Score score={post.votes} />}
+        <Favourite post={post} refreshFavourites={refreshFavourites} />
+        <Vote
+          image_id={post.id}
+          value={post.vote}
+          id={post.vote_id}
+          refreshVotes={refreshVotes}
+        />
+        {post.votes && <Score score={post.votes} />}
+      </div>
     </div>
   );
 };

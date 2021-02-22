@@ -1,6 +1,6 @@
 import React from "react";
 import { favouritePost, unfavouritePost } from "../../Api/Api";
-import { PostInterface } from "../Post/Post";
+import { PostInterface } from "../../Containers/Post/Post";
 
 interface Props {
   post: PostInterface;

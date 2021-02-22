@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getFavourites, getPosts, getVotes } from "../../Api/Api";
-import { FavouriteInterface, PostInterface } from "../../Components/Post/Post";
-import Posts from "../../Components/Posts/Posts";
 import { VoteInterface } from "../../Components/Vote/Vote";
+import { FavouriteInterface, PostInterface } from "../Post/Post";
+import Posts from "../Posts/Posts";
 
 const Home = () => {
   const [postsResponse, setPostsResponse] = useState<[PostInterface]>(
@@ -84,15 +84,11 @@ const Home = () => {
   }, [favourites, votes]);
 
   return (
-    <div>
-      {
-        <Posts
-          posts={posts}
-          refreshVotes={refreshVotes}
-          refreshFavourites={refreshFavourites}
-        />
-      }
-    </div>
+    <Posts
+      posts={posts}
+      refreshVotes={refreshVotes}
+      refreshFavourites={refreshFavourites}
+    />
   );
 };
 

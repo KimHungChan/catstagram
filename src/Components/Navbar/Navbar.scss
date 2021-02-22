@@ -1,0 +1,39 @@
+@import "../../Styles/colors.scss";
+
+.navbar {
+  border-bottom: 1px solid $border-color;
+  padding: 0 20px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+
+  h1 {
+    font-family: "Oleo Script", cursive;
+    font-size: 1.8rem;
+  }
+
+  ul {
+    display: flex;
+    max-width: 170px;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    margin-left: 1rem;
+
+    li {
+      list-style: none;
+      margin-right: 1rem;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    color: black;
+    border-bottom: 1px solid black;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}
