@@ -72,12 +72,6 @@ const getVotes = () => {
     .then((response: any) => response.data);
 };
 
-const deleteVote = (id: number | undefined) => {
-  return axios.delete("https://api.thecatapi.com/v1/votes/" + id, {
-    headers: { "x-api-key": config.APIKEY },
-  });
-};
-
 const upvotePost = (image_id: string, value: number) => {
   return axios
     .post(
@@ -107,5 +101,4 @@ export {
   unfavouritePost,
   getVotes,
   upvotePost,
-  deleteVote,
 };

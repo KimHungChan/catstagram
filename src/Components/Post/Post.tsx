@@ -1,4 +1,5 @@
 import Favourite from "../Favourite/Favourite";
+import Score from "../Score/Score";
 import Vote from "../Vote/Vote";
 import "./Post.scss";
 
@@ -12,6 +13,7 @@ export interface PostInterface {
   favourite_id?: number | undefined;
   vote: number;
   vote_id: number;
+  votes?: number;
 }
 
 export interface FavouriteInterface {
@@ -38,6 +40,7 @@ const Post: React.FC<Props> = ({ post, refreshVotes, refreshFavourites }) => {
         id={post.vote_id}
         refreshVotes={refreshVotes}
       />
+      {post.votes && <Score score={post.votes} />}
     </div>
   );
 };

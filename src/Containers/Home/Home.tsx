@@ -60,6 +60,7 @@ const Home = () => {
           favourite_id: undefined,
         };
       }
+      let numberOfVotes = 0;
       votes.forEach((vote) => {
         if (vote.image_id === post.id) {
           newPosts[index] = {
@@ -67,8 +68,17 @@ const Home = () => {
             vote: vote.value,
             vote_id: vote.id,
           };
+          vote.value === 1 ? numberOfVotes++ : numberOfVotes--;
         }
       });
+      console.log(
+        "🚀 ~ file: Home.tsx ~ line 73 ~ votes.forEach ~ numberOfVotes",
+        numberOfVotes
+      );
+      newPosts[index] = {
+        ...newPosts[index],
+        votes: numberOfVotes,
+      };
     });
     setPosts([...newPosts]);
   }, [favourites, votes]);
