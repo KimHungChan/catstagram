@@ -12,14 +12,12 @@ const Upload = () => {
     addUpdateIndex: number[] | undefined
   ) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
   };
 
   return (
     <div>
       <ImageUpload images={images} onChange={onChange} maxNumber={maxNumber} />
-      {console.log("🚀 ~ file: Upload.tsx ~ line 21 ~ Upload ~ images", images)}
       <button onClick={() => uploadImage(images[0]?.file, "")}>
         Upload Images
       </button>

@@ -1,4 +1,5 @@
-import { favouritePost, unfavouritePost } from "../../Api/Api";
+import Favourite from "../Favourite/Favourite";
+import Vote from "../Vote/Vote";
 import "./Post.scss";
 
 export interface PostInterface {
@@ -8,7 +9,9 @@ export interface PostInterface {
   id: string;
   sub_id: string | null;
   favourited?: boolean;
-  favourite_id?: number;
+  favourite_id?: number | undefined;
+  vote: number;
+  vote_id: number;
 }
 
 export interface FavouriteInterface {
@@ -19,21 +22,22 @@ export interface FavouriteInterface {
 
 interface Props {
   post: PostInterface;
+  refreshVotes: () => void;
+  refreshFavourites: () => void;
 }
 
-const Post: React.FC<Props> = ({ post }) => {
+const Post: React.FC<Props> = ({ post, refreshVotes, refreshFavourites }) => {
   return (
     <div className="post-container">
       <img src={post.url} alt="" />
-      {post.favourited ? (
-        <button onClick={() => unfavouritePost(post.favourite_id)}>
-          Unfavourite
-        </button>
-      ) : (
-        <button onClick={() => favouritePost(post.id, post.sub_id)}>
-          Favourite
-        </button>
-      )}
+
+      <Favourite post={post} refreshFavourites={refreshFavourites} />
+      <Vote
+        image_id={post.id}
+        value={post.vote}
+        id={post.vote_id}
+        refreshVotes={refreshVotes}
+      />
     </div>
   );
 };

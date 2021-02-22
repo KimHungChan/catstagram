@@ -33,19 +33,14 @@ const getPosts = () => {
 };
 
 const favouritePost = (image_id: string, sub_id: string | null) => {
-  // const form = new FormData();
-  // form.append("file", file);
-  axios
+  return axios
     .post(
       "https://api.thecatapi.com/v1/favourites",
 
       { image_id },
       { headers: { "x-api-key": config.APIKEY } }
     )
-    .then(function (response: Response) {
-      // handle success
-      console.log(response);
-    })
+    .then((response: any) => response.data)
     .catch(function (error: Error) {
       // handle error
       console.log(error);
@@ -69,4 +64,48 @@ const getFavourites = () => {
     .then((response: any) => response.data);
 };
 
-export { uploadImage, getPosts, favouritePost, getFavourites, unfavouritePost };
+const getVotes = () => {
+  return axios
+    .get("https://api.thecatapi.com/v1/votes?limit=100", {
+      headers: { "x-api-key": config.APIKEY },
+    })
+    .then((response: any) => response.data);
+};
+
+const deleteVote = (id: number | undefined) => {
+  return axios.delete("https://api.thecatapi.com/v1/votes/" + id, {
+    headers: { "x-api-key": config.APIKEY },
+  });
+};
+
+const upvotePost = (image_id: string, value: number) => {
+  return axios
+    .post(
+      "https://api.thecatapi.com/v1/votes",
+
+      { image_id: image_id, value: value },
+      { headers: { "x-api-key": config.APIKEY } }
+    )
+    .then(function (response: Response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error: Error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+};
+
+export {
+  uploadImage,
+  getPosts,
+  favouritePost,
+  getFavourites,
+  unfavouritePost,
+  getVotes,
+  upvotePost,
+  deleteVote,
+};
