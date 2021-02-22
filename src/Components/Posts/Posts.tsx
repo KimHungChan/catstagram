@@ -9,8 +9,8 @@ interface Props {
 const Posts: React.FC<Props> = ({ posts }) => {
   return (
     <div className="posts-container">
-      {posts.map((post) => (
-        <Post post={post} />
+      {posts.map((post, key) => (
+        <Post key={key} post={post} />
       ))}
     </div>
   );

@@ -1,18 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { getImages } from "../../Api/Api";
-import { PostInterface } from "../../Components/Post/Post";
+import { getFavourites, getPosts } from "../../Api/Api";
+import { FavouriteInterface, PostInterface } from "../../Components/Post/Post";
 import Posts from "../../Components/Posts/Posts";
 
 const Home = () => {
-  const [posts, setPosts] = useState<[PostInterface]>([
-    { url: "", width: 0, height: 0, id: "", sub_id: null },
+  const [postsResponse, setPostsResponse] = useState<[PostInterface]>(
+    [] as any
+  );
+  const [favourites, setFavourites] = useState<[FavouriteInterface]>([
+    [] as any,
   ]);
+  const [posts, setPosts] = useState<[PostInterface]>([] as any);
+
+  const refreshFavourites = () => {
+    getFavourites().then((response: any) => {
+      setFavourites(response);
+    });
+  };
 
   useEffect(() => {
-    getImages().then((response: any) => {
-      setPosts(response);
+    getPosts().then((response: any) => {
+      setPostsResponse(response);
     });
   }, []);
+
+  useEffect(() => {
+    refreshFavourites();
+  }, [postsResponse]);
+
+  useEffect(() => {
+    let newPosts: [PostInterface] = postsResponse;
+    postsResponse.forEach((post, index) => {
+      favourites.forEach((favourite) => {
+        if (favourite.image_id === post.id) {
+          newPosts[index] = {
+            ...post,
+            favourited: true,
+            favourite_id: favourite.id,
+          };
+        }
+      });
+    });
+    setPosts(newPosts);
+  }, [favourites]);
+
   return <div>{<Posts posts={posts} />}</div>;
 };
 

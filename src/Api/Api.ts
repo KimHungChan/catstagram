@@ -24,7 +24,7 @@ const uploadImage = (file: any, sub_id: string) => {
     });
 };
 
-const getImages = () => {
+const getPosts = () => {
   return axios
     .get("https://api.thecatapi.com/v1/images/?limit=20", {
       headers: { "x-api-key": config.APIKEY },
@@ -55,4 +55,18 @@ const favouritePost = (image_id: string, sub_id: string | null) => {
     });
 };
 
-export { uploadImage, getImages, favouritePost };
+const unfavouritePost = (id: number | undefined) => {
+  return axios.delete("https://api.thecatapi.com/v1/favourites/" + id, {
+    headers: { "x-api-key": config.APIKEY },
+  });
+};
+
+const getFavourites = () => {
+  return axios
+    .get("https://api.thecatapi.com/v1/favourites?limit=20", {
+      headers: { "x-api-key": config.APIKEY },
+    })
+    .then((response: any) => response.data);
+};
+
+export { uploadImage, getPosts, favouritePost, getFavourites, unfavouritePost };
