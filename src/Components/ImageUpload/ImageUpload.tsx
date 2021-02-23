@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 import { uploadImage } from "../../Api/Api";
+import Spinner from "../Spinner/Spinner";
 import "./ImageUpload.scss";
 
 const ImageUpload = ({
@@ -12,6 +13,7 @@ const ImageUpload = ({
   onChange: any;
   maxNumber: number;
 }) => {
+  const [uploading, setUploading] = useState(false);
   return (
     <ImageUploading
       multiple
@@ -43,26 +45,35 @@ const ImageUpload = ({
             ) : (
               imageList.map((image, index) => (
                 <>
-                  <div key={index} className="image-item">
-                    <img src={image.dataURL} alt="" width="100" />
-                    <div className="upload-button-container">
-                      <button onClick={() => onImageUpdate(index)}>
-                        Update
+                  {!uploading ? (
+                    <>
+                      <div key={index} className="image-item">
+                        <img src={image.dataURL} alt="" width="100" />
+                        <div className="upload-button-container">
+                          <button onClick={() => onImageUpdate(index)}>
+                            Update
+                          </button>
+                          <button onClick={() => onImageRemove(index)}>
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                      <button
+                        disabled={uploading}
+                        onClick={() => {
+                          setUploading(true);
+                          uploadImage(images[0]?.file).then(() => {
+                            onImageRemove(index);
+                            setUploading(false);
+                          });
+                        }}
+                      >
+                        Upload Image
                       </button>
-                      <button onClick={() => onImageRemove(index)}>
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() =>
-                      uploadImage(images[0]?.file).then(() => {
-                        onImageRemove(index);
-                      })
-                    }
-                  >
-                    Upload Image
-                  </button>
+                    </>
+                  ) : (
+                    <Spinner />
+                  )}
                 </>
               ))
             )}
