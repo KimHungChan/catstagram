@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Getting Started with Catstagram App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Quick View
 
-## Available Scripts
+<img src="./src/Assets/catstagram.png">
 
-In the project directory, you can run:
+https://catstragram.netlify.app/#/
+
+## Setup
+
+In the project directory, you should run:
+
+### `npm install`
+
+First install the npm packages
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This will open the page at localhost:3000
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run some of the tests I have written!
 
-### `npm run build`
+## Techniques used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [scss](https://sass-lang.com/) to style the components
+- [typeScript](https://www.typescriptlang.org/)
+- [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/) for testing along with Jest
+- [axios](https://www.npmjs.com/package/axios) for making requests
+- [react router](https://reactrouter.com/web/guides/quick-start) for creating routes
+- [react-notification](https://www.npmjs.com/package/react-notifications) for the notifications
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Thoughts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Thank you for the test and for taking the time to review my application. It was very interesting and I even learned some new thing while doing it. It was my first time using TypeScript so hopefully you will not judge it too critically. Below I will give you some of my thoughts and reasoning for what I did and did not do.
 
-### `npm run eject`
+### Tests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I didn't add too many tests in the end but just showed a general idea of how I would go about it which can be seen in the API folder and the Score component. If time permitted I would have added some end to end test to check that the buttons worked as expected with clicks and also the upload component.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### If there was more time
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Make a user and use the calls with the sub_id for that user.
+- Add pagination for the images and call the api per the pagination page number.
+- A mistake I made was that the UI waits for the API to return a change before updating creating a laggy user experience. I should have updated a local version of the state and then confirmed it changed in the API so that the user sees the changes immediately.
+- The react-notification library was having troubles with TS which I could not figure out in time so I had to change the ImageUpload file to a javascript file to bypass the issue.
+- The images may have some strange behaviors on iOS mobile that I should fix.
+- I should add the APIKEY as an ENV variable on netlify when I deploy it rather than post it publicly on GitHub.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+There's probably a lot more but those are the main points that I think would make the app more complete.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**_Thanks again for considering me for this role and I hope you enjoyed my solution!_**

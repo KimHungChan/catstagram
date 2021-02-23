@@ -7,7 +7,7 @@ interface Props {
 
 const Score: React.FC<Props> = ({ score }) => {
   return (
-    <div className="score">
+    <div data-testid="score" className="score">
       <div /> {score}
     </div>
   );

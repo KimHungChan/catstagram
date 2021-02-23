@@ -15,7 +15,7 @@ const uploadImage = (file: any) => {
       .then((response: Response) => {
         resolve(response);
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         reject(error);
       });
   });

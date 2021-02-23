@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import ImageUploading, { ImageListType } from "react-images-uploading";
+import ImageUploading from "react-images-uploading";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { uploadImage } from "../../Api/Api";
 import Spinner from "../Spinner/Spinner";
 import "./ImageUpload.scss";
 
-const ImageUpload = ({
-  images,
-  onChange,
-  maxNumber,
-}: {
-  images: ImageListType;
-  onChange: any;
-  maxNumber: number;
-}) => {
+const ImageUpload = ({ images, onChange, maxNumber }) => {
   const [uploading, setUploading] = useState(false);
   return (
     <ImageUploading
