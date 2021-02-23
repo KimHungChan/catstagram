@@ -54,6 +54,7 @@
 
   .upload-button-container {
     @include center;
+    flex-wrap: wrap;
     margin: 0 auto;
     > button {
       margin: 2rem;

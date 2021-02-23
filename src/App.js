@@ -1,4 +1,5 @@
 import React from "react";
+import { NotificationContainer } from "react-notifications";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Navbar from "./Components/Navbar/Navbar";
@@ -18,6 +19,7 @@ export default function App() {
         </Route>
       </Switch>
       <footer></footer>
+      <NotificationContainer />
     </Router>
   );
 }

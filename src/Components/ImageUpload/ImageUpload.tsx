@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
+import { NotificationManager } from "react-notifications";
+import "react-notifications/lib/notifications.css";
 import { uploadImage } from "../../Api/Api";
 import Spinner from "../Spinner/Spinner";
 import "./ImageUpload.scss";
@@ -62,10 +64,27 @@ const ImageUpload = ({
                         disabled={uploading}
                         onClick={() => {
                           setUploading(true);
-                          uploadImage(images[0]?.file).then(() => {
-                            onImageRemove(index);
-                            setUploading(false);
-                          });
+                          uploadImage(images[0]?.file)
+                            .then((response) => {
+                              NotificationManager.success(
+                                "Image uploaded",
+                                "Success"
+                              );
+                              onImageRemove(index);
+                              setUploading(false);
+                            })
+                            .catch((error) => {
+                              onImageRemove(index);
+                              setUploading(false);
+                              NotificationManager.error(
+                                "Image was too big, did not contain a Cat, was inappropriate, or the wrong file type.",
+                                "Error",
+                                5000,
+                                () => {
+                                  alert("callback");
+                                }
+                              );
+                            });
                         }}
                       >
                         Upload Image

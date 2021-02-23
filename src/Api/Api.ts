@@ -4,24 +4,21 @@ const axios = require("axios");
 const uploadImage = (file: any) => {
   const form = new FormData();
   form.append("file", file);
-  return axios
-    .post(
-      "https://api.thecatapi.com/v1/images/upload",
+  return new Promise((resolve, reject) => {
+    axios
+      .post(
+        "https://api.thecatapi.com/v1/images/upload",
 
-      form,
-      { headers: { "x-api-key": config.APIKEY } }
-    )
-    .then(function (response: Response) {
-      // handle success
-      console.log(response);
-    })
-    .catch(function (error: Error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
+        form,
+        { headers: { "x-api-key": config.APIKEY } }
+      )
+      .then((response: Response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 };
 
 const getPosts = () => {
@@ -41,12 +38,8 @@ const favouritePost = (image_id: string) => {
       { headers: { "x-api-key": config.APIKEY } }
     )
     .then((response: any) => response.data)
-    .catch(function (error: Error) {
-      // handle error
+    .catch((error: Error) => {
       console.log(error);
-    })
-    .then(function () {
-      // always executed
     });
 };
 
@@ -80,16 +73,11 @@ const upvotePost = (image_id: string, value: number) => {
       { image_id: image_id, value: value },
       { headers: { "x-api-key": config.APIKEY } }
     )
-    .then(function (response: Response) {
-      // handle success
+    .then((response: Response) => {
       console.log(response);
     })
     .catch(function (error: Error) {
-      // handle error
       console.log(error);
-    })
-    .then(function () {
-      // always executed
     });
 };
 

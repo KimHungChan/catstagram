@@ -13,9 +13,6 @@ const Navbar = () => {
         <li>
           <Link to="/upload">Upload</Link>
         </li>
-        {/* <li>
-          <Link to="/users">Users</Link>
-        </li> */}
       </ul>
     </nav>
   );
