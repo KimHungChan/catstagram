@@ -46,6 +46,7 @@ I didn't add too many tests in the end but just showed a general idea of how I w
 - A mistake I made was that the UI waits for the API to return a change before updating creating a laggy user experience. I should have updated a local version of the state and then confirmed it changed in the API so that the user sees the changes immediately.
 - The react-notification library was having troubles with TS which I could not figure out in time so I had to change the ImageUpload file to a javascript file to bypass the issue.
 - The images may have some strange behaviors on iOS mobile that I should fix.
+- Allow favourite by clicking on the image.
 - I should add the APIKEY as an ENV variable on netlify when I deploy it rather than post it publicly on GitHub.
 
 There's probably a lot more but those are the main points that I think would make the app more complete.
