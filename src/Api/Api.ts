@@ -1,7 +1,7 @@
 import config from "../config.json";
 const axios = require("axios");
 
-const uploadImage = (file: any, sub_id: string) => {
+const uploadImage = (file: any) => {
   const form = new FormData();
   form.append("file", file);
   return axios
@@ -26,13 +26,13 @@ const uploadImage = (file: any, sub_id: string) => {
 
 const getPosts = () => {
   return axios
-    .get("https://api.thecatapi.com/v1/images/?limit=20", {
+    .get("https://api.thecatapi.com/v1/images/?limit=100", {
       headers: { "x-api-key": config.APIKEY },
     })
     .then((response: any) => response.data);
 };
 
-const favouritePost = (image_id: string, sub_id: string | null) => {
+const favouritePost = (image_id: string) => {
   return axios
     .post(
       "https://api.thecatapi.com/v1/favourites",
@@ -58,7 +58,7 @@ const unfavouritePost = (id: number | undefined) => {
 
 const getFavourites = () => {
   return axios
-    .get("https://api.thecatapi.com/v1/favourites?limit=20", {
+    .get("https://api.thecatapi.com/v1/favourites?limit=100", {
       headers: { "x-api-key": config.APIKEY },
     })
     .then((response: any) => response.data);

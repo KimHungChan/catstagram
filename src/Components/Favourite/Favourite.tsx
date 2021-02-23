@@ -17,9 +17,7 @@ const Favourite: React.FC<Props> = ({ post, refreshFavourites }) => {
           ? await unfavouritePost(post.favourite_id).then(() =>
               refreshFavourites()
             )
-          : await favouritePost(post.id, post.sub_id).then(() =>
-              refreshFavourites()
-            );
+          : await favouritePost(post.id).then(() => refreshFavourites());
       }}
     ></button>
   );

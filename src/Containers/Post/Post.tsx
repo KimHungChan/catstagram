@@ -8,7 +8,6 @@ export interface PostInterface {
   width: number;
   height: number;
   id: string;
-  sub_id: string | null;
   favourited?: boolean;
   favourite_id?: number | undefined;
   vote: number;
@@ -19,7 +18,6 @@ export interface PostInterface {
 export interface FavouriteInterface {
   id: number;
   image_id: string;
-  sub_id: string | null;
 }
 
 interface Props {

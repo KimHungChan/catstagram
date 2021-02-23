@@ -56,7 +56,7 @@ const ImageUpload = ({
                   </div>
                   <button
                     onClick={() =>
-                      uploadImage(images[0]?.file, "").then(() => {
+                      uploadImage(images[0]?.file).then(() => {
                         onImageRemove(index);
                       })
                     }
