@@ -31,15 +31,11 @@ Run some of the tests I have written!
 - [react router](https://reactrouter.com/web/guides/quick-start) for creating routes
 - [react-notification](https://www.npmjs.com/package/react-notifications) for the notifications
 
-## Thoughts
-
-Thank you for the test and for taking the time to review my application. It was very interesting and I even learned some new thing while doing it. It was my first time using TypeScript so hopefully you will not judge it too critically. Below I will give you some of my thoughts and reasoning for what I did and did not do.
-
 ### Tests
 
-I didn't add too many tests in the end but just showed a general idea of how I would go about it which can be seen in the API folder and the Score component. If time permitted I would have added some end to end test to check that the buttons worked as expected with clicks and also the upload component.
+I didn't add too many tests in the end but just showed a general idea of how I would go about it which can be seen in the API folder and the Score component. If I put in more tim then I would have added some end to end test to check that the buttons worked as expected with clicks and also the upload component.
 
-### If there was more time
+### Futher improvements
 
 - Make a user and use the calls with the sub_id for that user.
 - Add pagination for the images and call the api per the pagination page number.
@@ -50,5 +46,3 @@ I didn't add too many tests in the end but just showed a general idea of how I w
 - I should add the APIKEY as an ENV variable on netlify when I deploy it rather than post it publicly on GitHub.
 
 There's probably a lot more but those are the main points that I think would make the app more complete.
-
-**_Thanks again for considering me for this role and I hope you enjoyed my solution!_**
